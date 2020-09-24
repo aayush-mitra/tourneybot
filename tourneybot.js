@@ -76,6 +76,25 @@ client.on('message', message => {
 					message.channel.send(exampleEmbed);
 				}
 			});
+		} else if (msg_content[1].toLowerCase() === "add") {
+			fs.readFile('data.json', (err, data) => {
+				if (err) {
+					message.channel.send("Error!");
+				} else {
+					if (message.member.highestRole.name === "Master" || message.member.highestRole.name === "Owner") {
+						let stuff = JSON.parse(data);
+					
+						let stuff1 = msg_content[2];
+						stuff.participants.push(stuff1);
+						let final = JSON.stringify(stuff);
+						fs.writeFileSync('data.json', final);
+						message.channel.send(`AYYY, ${stuff1} REGISTERED FOR THE TOURNEY!! GL participant #` + stuff.participants.length + "!!!!");
+					} else {
+						message.channel.send("NOOB!!! YOU CAN'T USE THIS COMMAND!");
+					}
+					
+				}
+			});
 		} 
 	}
 });
