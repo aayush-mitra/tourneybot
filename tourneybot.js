@@ -66,8 +66,10 @@ client.on('message', message => {
 							.setTitle('Tourney Participants!')
 							.setAuthor('TryHqrdTournies')
 							.setDescription(``).setFooter('Made by: Aayush Mitra aka Hachiman');
+					let count = 0;
 					stuff.participants.forEach(item => {
-						exampleEmbed.addField('Participant: ', `${item}`)
+						count++;
+						exampleEmbed.addField(`Participant: ${count}`, `${item}`)
 					});
 							
 							
