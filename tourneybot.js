@@ -86,7 +86,7 @@ client.on('message', message => {
 					if (message.member.highestRole.name === "Master" || message.member.highestRole.name === "Owner") {
 						let stuff = JSON.parse(data);
 					
-						let stuff1 = message.mentions.members.first(1)[0].displayName;
+						let stuff1 = message.guild.member(message.mentions.members.first()).displayName;
 						stuff.participants.push(stuff1);
 						let final = JSON.stringify(stuff);
 						fs.writeFileSync('data.json', final);
